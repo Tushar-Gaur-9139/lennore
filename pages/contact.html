@@ -270,7 +270,7 @@
 
         <div class="input-box">
           <input type="text" name="subject" class="box" id="subject" placeholder="subject" required>   
-          <input type="number" name="number" class="box" id="number" placeholder="phone number" required>  
+          <input type="number" name="number" class="box" id="number" placeholder="phone number" required minlength="10" maxlength="10">  
         </div> 
   
         <textarea cols="30" rows="10" name="comment" class="box" id="comment" placeholder="message"></textarea>
@@ -374,26 +374,75 @@
   <!-- ==================== Custom Script ==================== -->
 
   <!-- Contact-Form Script -->
-  <script>
-    jQuery('#contact-form').on('submit',function(e){
-      jQuery('#contact-form #msg').html('');
-      jQuery('#contact-form #submit').html('Please wait');
-      jQuery('#contact-form #submit').attr('disabled',true);
-      jQuery.ajax({
-        url:'../assets/php/submit.php',
-        type:'post',
-        data:jQuery('#contact-form').serialize(),
-        success:function(result){
-            jQuery('#contact-form #msg').html(result);
-            jQuery('#contact-form #submit').html('Submit');
-            jQuery('#contact-form #submit').attr('disabled',false);
-            jQuery('#contact-form')[0].reset();
-        }
-      });
-      e.preventDefault();
-    });
-  </script>
+ <!-- Add SweetAlert for beautiful alerts -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<script>
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const submitBtn = document.getElementById('submit');
+    const originalBtnText = submitBtn.innerHTML;
+    submitBtn.innerHTML = 'Sending...';
+    submitBtn.disabled = true;
+    
+    // Get form data
+    const formData = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      phone: document.getElementById('number').value,
+      subject: document.getElementById('subject').value,
+      message: document.getElementById('comment').value
+    };
+
+    // Replace with your Google Apps Script URL
+    const scriptUrl = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+
+    // Show loading state
+    Swal.fire({
+      title: 'Sending your message',
+      html: 'Please wait...',
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      }
+    });
+
+    // Send data to Google Sheets
+    fetch(scriptUrl, {
+      method: 'POST',
+      body: JSON.stringify(formData),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      Swal.fire({
+        icon: data.result === 'success' ? 'success' : 'error',
+        title: data.result === 'success' ? 'Success!' : 'Error',
+        text: data.message,
+        confirmButtonText: 'OK'
+      });
+      
+      if (data.result === 'success') {
+        document.getElementById('contact-form').reset();
+      }
+    })
+    .catch(error => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Failed to send message. Please try again later.',
+        confirmButtonText: 'OK'
+      });
+    })
+    .finally(() => {
+      submitBtn.innerHTML = originalBtnText;
+      submitBtn.disabled = false;
+    });
+  });
+</script>
 
 </body>
 
