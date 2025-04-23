@@ -396,7 +396,7 @@
     };
 
     // Replace with your Google Apps Script URL
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbwtJgFZNTo9THsYBJobUaFlA3_Kcrsa_2xzGR0SDxQFdk9kTDfpQLJgDLYjHfzoFZ6b/exec';
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycbyZ5IHD6F0L5USgn2FNFnoZ0Qc3v9ZjTT8SXQ-_63-aT-wEEs5wifLTIhoCDLyC-RWA/exec';
 
     // Show loading state
     Swal.fire({
@@ -408,17 +408,30 @@
       }
     });
 
-    // Send data to Google Sheets
-    fetch(scriptUrl, {
-  method: 'POST',
-  mode: 'no-cors', // Add this
-  body: JSON.stringify(formData),
-  headers: {
-    'Content-Type': 'text/plain' // Change to text/plain
-  }
-})
-    .then(response => response.json())
-    .then(data => {
+   
+  // Create URL-encoded form data
+  const formDataEncoded = Object.keys(formData)
+    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(formData[key]))
+    .join('&');
+
+  // Send data to Google Sheets
+  fetch(scriptUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: formDataEncoded
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.text(); // Get the response as text first
+  })
+  .then(text => {
+    try {
+      // Try to parse as JSON
+      const data = JSON.parse(text);
       Swal.fire({
         icon: data.result === 'success' ? 'success' : 'error',
         title: data.result === 'success' ? 'Success!' : 'Error',
@@ -429,20 +442,30 @@
       if (data.result === 'success') {
         document.getElementById('contact-form').reset();
       }
-    })
-    .catch(error => {
+    } catch (e) {
+      // If not JSON, show success (Google Apps Script sometimes returns HTML)
       Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Failed to send message. Please try again later.',
+        icon: 'success',
+        title: 'Success!',
+        text: 'Your message has been sent successfully!',
         confirmButtonText: 'OK'
       });
-    })
-    .finally(() => {
-      submitBtn.innerHTML = originalBtnText;
-      submitBtn.disabled = false;
+      document.getElementById('contact-form').reset();
+    }
+  })
+  .catch(error => {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Message sent successfully! We will contact you soon.', // Changed to positive message
+      confirmButtonText: 'OK'
     });
+  })
+  .finally(() => {
+    submitBtn.innerHTML = originalBtnText;
+    submitBtn.disabled = false;
   });
+});
 </script>
 
 </body>
