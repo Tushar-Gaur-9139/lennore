@@ -396,7 +396,7 @@
     };
 
     // Replace with your Google Apps Script URL
-    const scriptUrl = ' https://script.google.com/macros/s/AKfycbz2Xzl7L1AS0lhrZi5KtS-ybaBT9a4TN0q3F5HtZklh0vHylwGIq9Aieyew4nA7NaCD/exec';
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycbzbx6CkBcHIENhZHB88J0yJS-46nDY1sg6TftxKB51rvGt9VR9q3NUPnR1XDk8nVGtB/exec';
 
     // Show loading state
     Swal.fire({
@@ -410,12 +410,13 @@
 
     // Send data to Google Sheets
     fetch(scriptUrl, {
-      method: 'POST',
-      body: JSON.stringify(formData),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
+  method: 'POST',
+  mode: 'no-cors', // Add this
+  body: JSON.stringify(formData),
+  headers: {
+    'Content-Type': 'text/plain' // Change to text/plain
+  }
+})
     .then(response => response.json())
     .then(data => {
       Swal.fire({
