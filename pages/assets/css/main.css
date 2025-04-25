@@ -4680,5 +4680,7 @@ input[type="range"]::-moz-range-thumb{
     color: var(--white);
     padding-left: 1rem;
 }
-
+ p i{
+    color: whitesmoke;
+ }
 /*------------------------------ (08)-Contact (End) ------------------------------*/
