@@ -134,8 +134,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&amp;display=swap');
 
 :root{
-    --main-color: #24B5FC; 
-    --secondary-color: #002c8f;
+    --main-color: rgb(4, 35, 4); 
+    --secondary-color:rgba(39, 137, 103, 0.908);
     --black: #000;
     --white: #fff;
     --grey: #666; 
@@ -299,7 +299,7 @@ img{
 
 .logo img{
     height: 5.5rem;
-    width: auto;
+    width: 200px;
 }
 
 .logo h3{
@@ -1401,8 +1401,8 @@ input:-webkit-autofill:active {
     -ms-grid-columns: (minmax(25rem, 1fr))[auto-fit];
         grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     gap: 2rem;
-    background: -webkit-linear-gradient(rgba(0, 44, 143, 0.9), rgba(0, 44, 143, 0.9)), url("../images/Background/Counter.jpg");
-    background:         linear-gradient(rgba(0, 44, 143, 0.9), rgba(0, 44, 143, 0.9)), url("../images/Background/Counter.jpg");
+    background: -webkit-linear-gradient(rgba(39, 137, 103, 0.908)), url("../images/Background/Counter.jpg");
+    background:         linear-gradient(rgba(39, 137, 103, 0.908)), url("../images/Background/Counter.jpg");
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
@@ -1442,8 +1442,8 @@ input:-webkit-autofill:active {
 
 /*----- 5- Water Composition -----*/
 .water-composition{
-    background: -webkit-linear-gradient(rgba(0, 44, 143, 0.9), rgba(0, 44, 143, 0.9)), url("../images/Background/Composition.jpg");
-    background:         linear-gradient(rgba(0, 44, 143, 0.9), rgba(0, 44, 143, 0.9)), url("../images/Background/Composition.jpg");
+    background: -webkit-linear-gradient(rgba(39, 137, 103, 0.908)), url("../images/Background/Composition.jpg");
+    background:         linear-gradient(rgba(39, 137, 103, 0.908)), url("../images/Background/Composition.jpg");
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
@@ -1935,8 +1935,8 @@ input:-webkit-autofill:active {
 
 /*----- 4- Testimonials -----*/
 .testimonial{
-    background: -webkit-linear-gradient(rgba(0, 44, 143, 0.9), rgba(0, 44, 143, 0.9)), url("../images/Background/Testimonials.jpg");
-    background:         linear-gradient(rgba(0, 44, 143, 0.9), rgba(0, 44, 143, 0.9)), url("../images/Background/Testimonials.jpg");
+    background: -webkit-linear-gradient(rgba(39, 137, 103, 0.908)), url("../images/Background/Testimonials.jpg");
+    background:         linear-gradient(rgba(39, 137, 103, 0.908)), url("../images/Background/Testimonials.jpg");
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
