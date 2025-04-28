@@ -259,6 +259,7 @@ img{
 	font-weight: 500;
     color: var(--white);
 	background: var(--main-color);
+    /* margin-bottom:2000px; */
 	z-index: 1;
 	-webkit-transition: all 0.3s ease;
 	-moz-transition: all 0.3s ease;
