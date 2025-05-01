@@ -347,8 +347,8 @@ img{
 /*----- 4- Page Title CSS -----*/
 .page-title{
     position: relative;
-    background: -webkit-linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), url("../images/PageTitle/PageTitle.jpg");
-    background:         linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), url("../images/PageTitle/PageTitle.jpg");
+    /* background: -webkit-linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), url("../images/PageTitle/PageTitle.jpg"); */
+    
     min-height: 45rem;
     background-repeat: no-repeat;  
     background-size: cover;
@@ -4712,4 +4712,6 @@ input[type="range"]::-moz-range-thumb{
  p i{
     color: whitesmoke;
  }
+
 /*------------------------------ (08)-Contact (End) ------------------------------*/
+
