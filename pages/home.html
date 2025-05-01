@@ -30,6 +30,120 @@
   <link rel="stylesheet" href="./assets/css/responsive.css">
 
 </head>
+<style>
+  /* FAQ Section Styles */
+  .faq-section {
+      max-width: 80%;
+      margin: 40px auto;
+      padding: 20px;
+      font-family: 'Arial', sans-serif;
+  }
+  
+  .faq-heading {
+      text-align: center;
+      margin-bottom: 30px;
+  }
+  
+  .faq-heading h2 {
+      color:rgba(39, 137, 103, 0.908);
+      font-size: 32px;
+      margin-bottom: 10px;
+  }
+  
+  .faq-heading p {
+      color: #666;
+      font-size: 16px;
+  }
+  
+  .faq-container {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .faq-item {
+      border-bottom: 1px solid #e0e0e0;
+      transition: all 0.3s ease;
+  }
+  
+  .faq-item:last-child {
+      border-bottom: none;
+  }
+  
+  .faq-question {
+      width: 100%;
+      padding: 20px;
+      text-align: left;
+      background: #f9f9f9;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+  }
+  
+  .faq-question:hover {
+      background:rgba(39, 137, 103, 0.908);
+      color: #fff;
+  }
+  
+  .faq-question i {
+      transition: transform 0.3s ease;
+  }
+  
+  .faq-question.active i {
+      transform: rotate(180deg);
+  }
+  
+  .faq-answer {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, padding 0.3s ease;
+      background: #fff;
+      font-size:16px;
+  }
+  
+  .faq-question.active + .faq-answer {
+      padding-bottom: 40px;
+      padding-top:20px;
+      max-height: 1000px; /* Increased to accommodate long answers */
+  }
+  
+  .faq-answer p {
+      color: #666;
+      line-height: 1.6;
+      margin: 0;
+  }
+  
+  /* Animation to scroll to the question when opened */
+  @keyframes smoothScroll {
+      0% { scroll-margin-top: 0; }
+      100% { scroll-margin-top: 20px; }
+  }
+  
+  .faq-item.active-item {
+      scroll-margin-top: 20px;
+      animation: smoothScroll 0.5s forwards;
+  }
+  
+  @media (max-width: 768px) {
+      .faq-question {
+          padding: 15px;
+          font-size: 16px;
+      }
+      
+      .faq-heading h2 {
+          font-size: 28px;
+      }
+  }
+</style>
+
+
 <body>
 
   <!-- ==================== Scroll-Top Area (Start) ==================== -->
@@ -49,10 +163,20 @@
       <div class="header-1">
 
         <!-- == Contacts == -->
-        <ul class="header-contacts">
-          <li><i class="fas fa-phone" style="color: whitesmoke;"></i><span>+91 98103 37293</span></li>
-          <li><i class="fas fa-envelope" style="color: whitesmoke;"></i><span class="gmail">infolennore@gmail.com</span></li>
-        </ul>
+                <ul class="header-contacts" >
+  <li class="clickable-contact">
+    <a href="tel:+919810337293">
+      <i class="fas fa-phone lennore-header-contact"  style="color:whitesmoke"></i>
+      <span  style="color:whitesmoke">+91 98103 37293</span>
+    </a>
+  </li>
+  <li class="clickable-contact">
+    <a href="mailto:info@lennore.in">
+      <i class="fas fa-envelope lennore-header-contact"  style="color:whitesmoke"></i>
+      <span class="gmail"  style="color:whitesmoke">info@lennore.in</span>
+    </a>
+  </li>
+</ul>
 
         <!-- == Social == -->
         <ul class="social-contacts">
@@ -371,84 +495,6 @@
 
 
 
-  <!-- ==================== Services Area (Start) ==================== -->
-  <!-- <section class="services">
-
-    <div class="heading">  
-      <span>what we offer</span>
-      <h2>our services</h2>  
-      <img src="../assets/img/L7.jpg" alt=""> 
-    </div>
-
-    <div class="box-container">
-
-      <div class="service-item">
-        <div class="image">
-          <img src="../assets/images/Service/Services/Service-1.jpg" alt="">
-        </div>
-        <div class="content">
-          <a href="./service.html"><h3>Bottled water</h3></a>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos sequi modi.</p>
-        </div>
-      </div>
-
-      <div class="service-item">
-        <div class="image">
-          <img src="../assets/images/Service/Services/Service-2.jpg" alt="">
-        </div>
-        <div class="content">
-          <a href="./service.html"><h3>water dispenser</h3></a>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos sequi modi.</p>
-        </div>
-      </div>
-
-      <div class="service-item">
-        <div class="image">
-          <img src="../assets/images/Service/Services/Service-3.jpg" alt="">
-        </div>
-        <div class="content">
-          <a href="./service.html"><h3>water softening</h3></a>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos sequi modi.</p>
-        </div>
-      </div>
-
-      <div class="service-item">
-        <div class="image">
-          <img src="../assets/images/Service/Services/Service-4.jpg" alt="">
-        </div>
-        <div class="content">
-          <a href="./service.html"><h3>filtration plants</h3></a>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos sequi modi.</p>
-        </div>
-      </div>
-      
-      <div class="service-item">
-        <div class="image">
-          <img src="../assets/images/Service/Services/Service-5.jpg" alt="">
-        </div>
-        <div class="content">
-          <a href="./services.html"><h3>water testing</h3></a>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos sequi modi.</p>
-        </div>
-      </div> 
-
-      <div class="service-item">
-        <div class="image">
-          <img src="../assets/images/Service/Services/Service-6.jpg" alt="">
-        </div>
-        <div class="content">
-          <a href="./services.html"><h3>water refill</h3></a>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos sequi modi.</p>
-        </div>
-      </div>
-
-    </div>
-
-  </section> -->
-  <!-- ==================== Services Area (End) ==================== -->
-
-
-
   <!-- ==================== Products Area (Start) ==================== -->
   <section class="products">
 
@@ -465,8 +511,8 @@
           <img src="./assets/img/L5.jpg" alt="">
         </div>
         <div class="content">
-          <a href="./services.html"><h3>Water Purifier [L5] </h3> </a> 
-          <div class="price">$40.00 <span>$50.00</span></div>
+          <a href="./L5.html"><h3>Water Purifier [L5] </h3> </a> 
+          <!-- <div class="price">$40.00 <span>$50.00</span></div> -->
           <p>Smart hydration with advanced purification every day.</p>
           <!-- <a href="pages/Shop/Cart.html" class="btn">add to cart</a> -->
         </div>
@@ -477,8 +523,8 @@
           <img src="./assets/img/L5+RO.jpg" alt="">
         </div>
         <div class="content">
-          <a href="./services.html"><h3>Water Purifier [L5 + RO]</h3> </a>   
-          <div class="price">$40.00 <span>$50.00</span></div>
+          <a href="./L5+ro.html"><h3>Water Purifier [L5 + RO]</h3> </a>   
+          <!-- <div class="price">$40.00 <span>$50.00</span></div> -->
           <p>Pure water plus RO, perfect for daily health. </p>
           <!-- <a href="pages/Shop/Cart.html" class="btn">add to cart</a> -->
         </div>
@@ -489,8 +535,8 @@
           <img src="./assets/img/L7.jpg" alt="">
         </div>
         <div class="content">
-          <a href="./services.html"><h3>Water Purifier [L7] </h3> </a> 
-          <div class="price">$40.00 <span>$50.00</span></div>
+          <a href="./L7.html"><h3>Water Purifier [L7] </h3> </a> 
+          <!-- <div class="price">$40.00 <span>$50.00</span></div> -->
           <p>Sleek design meets high-tech water purification power.</p>
           <!-- <a href="pages/Shop/Cart.html" class="btn">add to cart</a> -->
         </div>
@@ -503,8 +549,8 @@
           <img src="./assets/img/L7+RO.jpg" alt="">
         </div>
         <div class="content">
-          <a href="./services.html"><h3>Water Purifier [L7 + RO]</h3> </a> 
-          <div class="price">$40.00 <span>$50.00</span></div>
+          <a href="./L7+ro.html"><h3>Water Purifier [L7 + RO]</h3> </a> 
+          <!-- <div class="price">$40.00 <span>$50.00</span></div> -->
           <p>Premium RO system with unmatched filtration performance. </p>
           <!-- <a href="pages/Shop/Cart.html" class="btn">add to cart</a> -->
         </div>
@@ -514,7 +560,6 @@
 
   </section>
   <!-- ==================== Products Area (End) ==================== -->
-
 
 
   <!-- ==================== Composition Area (Start) ==================== -->
@@ -815,7 +860,7 @@
 
 
   <!-- ==================== Sponsors Area (Start) ==================== -->
-  <section class="sponsors">
+  <!-- <section class="sponsors">
 
     <div class="heading">  
       <span>our amazing sponsors</span>
@@ -840,7 +885,7 @@
       </div>
     </div> 
 
-  </section>
+  </section> -->
   <!-- ==================== Sponsors Area (End) ==================== -->
 
   <!-- whats app -->
@@ -852,6 +897,126 @@
 </div>
 
   <!-- whatsapp  -->
+
+
+<!-- faq section start -->
+<section class="faq-section">
+  <div class="faq-heading">
+      <h2>Frequently Asked Questions</h2>
+      <p>Find answers to common questions about our products</p>
+  </div>
+  
+  <div class="faq-container" id="faqContainer">
+      <!-- FAQ Item 1 -->
+      <div class="faq-item">
+          <button class="faq-question">
+            Is alkaline water safe for daily consumption?
+              <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+              <p>Yes! Alkaline water from Lennore is safe, healthy, and ideal for daily use.</p>
+          </div>
+      </div>
+      
+      <!-- FAQ Item 2 -->
+      <div class="faq-item">
+          <button class="faq-question">
+            Can it be installed in my kitchen?
+              <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+              <p>Absolutely. Lennore Ionizer is designed for easy countertop or wall-mounted installation.
+                Contact Us</p>
+          </div>
+      </div>
+      
+      <!-- FAQ Item 3 -->
+      <div class="faq-item">
+          <button class="faq-question">
+              What makes Lennore special from others?
+              <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+              <p>Alkaline, Antioxidant and Micro-Clustering.</p>
+          </div>
+      </div>
+      
+      <!-- FAQ Item 4 -->
+      <div class="faq-item">
+          <button class="faq-question">
+              Why Lennore Alkaline Water Ionizer Machine?
+              <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+              <ul>
+                <li><strong>Energy Efficient:</strong> Uses less power than competitors without compromising performance</li>
+                <li><strong>100% Safe:</strong> Produces natural pH levels (11.5 to 2.5) without chemicals</li>
+                <li><strong>Easy Upgradation:</strong> Modular design for future enhancements</li>
+                <li><strong>Quality Assured:</strong> 32-point inspection across 9 quality levels before shipping</li>
+              </ul>
+          </div>
+      </div>
+  </div>
+</section>
+
+<script>
+  // Improved FAQ Accordion Functionality
+  document.addEventListener('DOMContentLoaded', function() {
+      const faqContainer = document.getElementById('faqContainer');
+      const faqQuestions = document.querySelectorAll('.faq-question');
+      
+      faqQuestions.forEach(question => {
+          question.addEventListener('click', function() {
+              const answer = this.nextElementSibling;
+              const isOpening = !this.classList.contains('active');
+              
+              // Close all other FAQs
+              faqQuestions.forEach(q => {
+                  if (q !== this) {
+                      q.classList.remove('active');
+                      q.nextElementSibling.style.maxHeight = null;
+                  }
+              });
+              
+              // Toggle current FAQ
+              this.classList.toggle('active');
+              
+              if (this.classList.contains('active')) {
+                  answer.style.maxHeight = answer.scrollHeight + 'px';
+                  
+                  // Smooth scroll to keep question visible
+                  setTimeout(() => {
+                      this.scrollIntoView({
+                          behavior: 'smooth',
+                          block: 'nearest'
+                      });
+                  }, 100);
+              } else {
+                  answer.style.maxHeight = null;
+              }
+          });
+      });
+      
+      // Format long answers better
+      document.querySelectorAll('.faq-answer p').forEach(answer => {
+          if (answer.textContent.length > 150) {
+              const text = answer.textContent;
+              answer.innerHTML = text.split('\n\n').map(paragraph => 
+                  `<p>${paragraph.trim()}</p>`
+              ).join('');
+          }
+      });
+  });
+</script>
+<!-- faq section end -->
+
+
+
+
+
+
+
+
   <!-- ==================== Footer Area (Start) ==================== -->
   <footer class="footer">
 
@@ -909,17 +1074,73 @@
           <img src="./assets/images/Heading/heading.html" alt="">
         </div>
         <div class="info connect">
-          <p><i class="fas fa-phone" style="color: whitesmoke;"></i><span>+91 98103 37293</span></p>
-          <p><i class="fas fa-envelope" style="color: whitesmoke;"></i><span class="gmail">infolennore@gmail.com</span></p>
-          <p><i class="fas fa-map" style="color: whitesmoke;"></i><span>Delhi,India </span></p>
-          <p><i class="fa-solid fa-clock" style="color: whitesmoke;"></i><span>Mon - Fri (8AM - 10PM)</span></p>
+          <p class="clickable-contact">
+            <a href="tel:+919810337293">
+              <i class="fas fa-phone contact-icon"></i>
+              <span>+91 98103 37293</span>
+            </a>
+          </p>
+          <p class="clickable-contact">
+            <a href="mailto:info@lennore.in">
+              <i class="fas fa-envelope contact-icon"></i>
+              <span class="gmail">info@lennore.in</span>
+            </a>
+          </p>
+          <p class="clickable-contact">
+            <a href="https://maps.google.com/?q=Apex Square, Plot No : 11, Pocket B3, Sector - 17, Dwarka, New Delhi - 110075" target="_blank">
+              <i class="fas fa-map contact-icon"></i>
+              <span>Apex Square, Plot No : 11, Pocket B3, Sector - 17, Dwarka, New Delhi - 110075</span>
+            </a>
+          </p>
+          <p>
+            <i class="fa-solid fa-clock contact-icon"></i>
+            <span>Mon - Sat (10AM - 7PM)</span>
+          </p>
         </div>
+        <style>
+          /* Contact Information Styles */
+.info.connect {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.clickable-contact a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.clickable-contact a:hover {
+  color: #2a7d2e; /* Lennore brand green */
+}
+
+.contact-icon {
+  color: #f5f5f5 !important;
+  min-width: 20px;
+  text-align: center;
+}
+
+.clickable-contact:hover .contact-icon {
+  color: #2a7d2e;
+  transform: scale(1.1);
+}
+
+/* Remove default link styling */
+.clickable-contact a,
+.clickable-contact a:hover,
+.clickable-contact a:visited {
+  color: inherit;
+}
+        </styl>
       </div>
 
     </div>
 
     <div class="content">
-      <p>designed by <span>Tushar</span> | all rights reserved</p>
+      <p>designed by <span>Lennore</span> | all rights reserved</p>
     </div>
 
   </footer>
